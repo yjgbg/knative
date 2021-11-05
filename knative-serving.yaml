@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-serving
+---
+apiVersion: operator.knative.dev/v1alpha1
+kind: KnativeServing
+metadata:
+  name: knative-serving
+  namespace: knative-serving
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-domain
+  namespace: knative-serving
+data:
+  yjgbg.me: ""
+---
+apiVersion: v1
+data:
+  domainTemplate: |-
+    {{if eq "index" .Name -}}
+      {{- .Namespace -}}
+    {{else -}}
+      {{- .Name}}.{{.Namespace -}}
+    {{end -}}
+    .{{.Domain}}
+kind: ConfigMap
+metadata:
+  name: config-network
+  namespace: knative-serving
