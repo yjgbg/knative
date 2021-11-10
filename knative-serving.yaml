@@ -8,6 +8,17 @@ kind: KnativeServing
 metadata:
   name: knative-serving
   namespace: knative-serving
+spec:
+  registry:
+    override:
+      activator: docker.io/yjgbg/activator:v0.13.0
+      autoscaler: docker.io/yjgbg/autoscaler:v0.13.0
+      controller: docker.io/yjgbg/controller:v0.13.0
+      webhook: docker.io/yjgbg/webhook:v0.13.0
+      autoscaler-hpa: docker.io/yjgbg/autoscaler-hpa:v0.13.0
+      domain-mapping: docker.io/yjgbg/domain-mapping:v0.13.0
+      domainmapping-webhook: docker.io/yjgbg/domainmapping-webhook:v0.13.0
+      migrate: docker.io/yjgbg/migrate:v0.13.0
 ---
 apiVersion: v1
 kind: ConfigMap
